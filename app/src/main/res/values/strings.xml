@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">Slot Machine</string>
+
     <string name="progress_indicator">%</string>
+
+    <string name="play">play</string>
+    <string name="exit">exit</string>
+
 </resources>

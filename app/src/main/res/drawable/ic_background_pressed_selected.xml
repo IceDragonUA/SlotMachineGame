@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <corners android:radius="@dimen/icon_blur" />
+            <gradient
+                android:angle="270"
+                android:centerColor="@android:color/transparent"
+                android:endColor="@android:color/transparent"
+                android:startColor="@android:color/transparent" />
+            <padding android:bottom="@dimen/icon_shadow" />
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <corners android:radius="@dimen/icon_blur" />
+            <gradient
+                android:angle="270"
+                android:centerColor="@android:color/transparent"
+                android:endColor="@android:color/transparent"
+                android:startColor="@android:color/transparent" />
+            <padding android:bottom="@dimen/icon_shadow" />
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <corners android:radius="@dimen/icon_blur" />
+            <gradient
+                android:angle="270"
+                android:centerColor="@android:color/transparent"
+                android:endColor="@android:color/transparent"
+                android:startColor="@android:color/transparent" />
+            <padding android:bottom="@dimen/icon_shadow" />
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <corners android:radius="@dimen/icon_blur" />
+            <gradient
+                android:angle="270"
+                android:centerColor="@android:color/transparent"
+                android:endColor="@android:color/transparent"
+                android:startColor="@android:color/transparent" />
+            <padding android:bottom="@dimen/icon_shadow" />
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <corners android:radius="@dimen/icon_blur" />
+            <gradient
+                android:angle="270"
+                android:centerColor="@android:color/transparent"
+                android:endColor="@android:color/transparent"
+                android:startColor="@android:color/transparent" />
+            <padding android:bottom="@dimen/icon_shadow" />
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <corners android:radius="@dimen/icon_radius" />
+            <solid android:color="@color/light_green" />
+        </shape>
+    </item>
+</layer-list>

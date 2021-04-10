@@ -5,7 +5,7 @@ import com.rnd.app.common.presentation.BasePresenter
 class WelcomePresenter : BasePresenter<WelcomeContract.View>(), WelcomeContract.Presenter {
 
     override fun loadData() {
-
+        view?.initView()
     }
 
 }

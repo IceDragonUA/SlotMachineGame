@@ -16,4 +16,8 @@
     <dimen name="progress_radius">4dp</dimen>
     <dimen name="progress_text_size">24dp</dimen>
 
+    <dimen name="icon_radius">5dp</dimen>
+    <dimen name="icon_shadow">1dp</dimen>
+    <dimen name="icon_blur">5dp</dimen>
+
 </resources>

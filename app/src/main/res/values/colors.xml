@@ -8,6 +8,12 @@
     <color name="dark_grey">#343537</color>
     <color name="light_green">#00FF99</color>
 
+    <color name="shadow_layer_1">#0D000000</color>
+    <color name="shadow_layer_2">#1A000000</color>
+    <color name="shadow_layer_3">#26000000</color>
+    <color name="shadow_layer_4">#33000000</color>
+    <color name="shadow_layer_5">#40000000</color>
+
     100% — FF
     95% — F2
     90% — E6

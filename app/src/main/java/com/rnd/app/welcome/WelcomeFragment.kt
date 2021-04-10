@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import com.rnd.app.common.presentation.BaseFragment
+import com.rnd.app.common.root
 import com.rnd.app.databinding.FragmentWelcomeBinding
 import org.koin.android.ext.android.inject
 
@@ -33,10 +34,16 @@ class WelcomeFragment : BaseFragment<WelcomeContract.View, WelcomeContract.Prese
     }
 
     override fun initView() {
+        binding?.play?.setOnClickListener {
+            navigateTo(WelcomeFragmentDirections.actionWelcomeFragmentToHomeFragment())
+        }
 
+        binding?.exit?.setOnClickListener {
+            activity?.root()?.onBackPressed()
+        }
     }
 
-    override fun navigateTo(direction: NavDirections) {
+    private fun navigateTo(direction: NavDirections) {
         view?.findNavController()?.navigate(direction)
     }
 }
