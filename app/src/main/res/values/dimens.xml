@@ -15,9 +15,17 @@
     <dimen name="progress_padding">15dp</dimen>
     <dimen name="progress_radius">4dp</dimen>
     <dimen name="progress_text_size">24dp</dimen>
+    <dimen name="bet_text_size">48dp</dimen>
 
     <dimen name="icon_radius">5dp</dimen>
     <dimen name="icon_shadow">1dp</dimen>
     <dimen name="icon_blur">5dp</dimen>
+
+    <dimen name="text_height">60dp</dimen>
+
+    <dimen name="item_width">195dp</dimen>
+    <dimen name="item_height">195dp</dimen>
+
+    <dimen name="button_margin">20dp</dimen>
 
 </resources>

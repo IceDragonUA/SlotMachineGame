@@ -1,4 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<View xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pipe"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"/>
+
+    <ImageView
+        android:id="@+id/betTxt"
+        android:layout_width="@dimen/default_width"
+        android:layout_height="@dimen/text_height"
+        android:src="@drawable/txt_bet"
+        app:layout_constraintBottom_toTopOf="@+id/bet"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/creditTxt"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/creditTxt"
+        android:layout_width="@dimen/default_width"
+        android:layout_height="@dimen/text_height"
+        android:src="@drawable/txt_credit"
+        app:layout_constraintBottom_toTopOf="@+id/credit"
+        app:layout_constraintLeft_toRightOf="@id/betTxt"
+        app:layout_constraintRight_toLeftOf="@id/winTxt"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/winTxt"
+        android:layout_width="@dimen/default_width"
+        android:layout_height="@dimen/text_height"
+        android:src="@drawable/txt_win"
+        app:layout_constraintBottom_toTopOf="@+id/win"
+        app:layout_constraintLeft_toRightOf="@id/creditTxt"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/bet"
+        style="@style/BetText"
+        app:layout_constraintBottom_toTopOf="@id/item_1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/credit"
+        app:layout_constraintTop_toBottomOf="@id/betTxt"
+        tools:ignore="ContentDescription"
+        tools:text="100$" />
+
+    <TextView
+        android:id="@+id/credit"
+        style="@style/BetText"
+        app:layout_constraintBottom_toTopOf="@id/item_2"
+        app:layout_constraintLeft_toRightOf="@id/bet"
+        app:layout_constraintRight_toLeftOf="@id/win"
+        app:layout_constraintTop_toBottomOf="@id/creditTxt"
+        tools:ignore="ContentDescription"
+        tools:text="100$" />
+
+    <TextView
+        android:id="@+id/win"
+        style="@style/BetText"
+        app:layout_constraintBottom_toTopOf="@id/item_3"
+        app:layout_constraintLeft_toRightOf="@id/credit"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/winTxt"
+        tools:ignore="ContentDescription"
+        tools:text="100$" />
+
+    <ImageView
+        android:id="@+id/item_1"
+        android:layout_width="@dimen/item_width"
+        android:layout_height="@dimen/item_height"
+        android:background="@drawable/item_bg"
+        android:src="@drawable/item1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/item_2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/item_2"
+        android:layout_width="@dimen/item_width"
+        android:layout_height="@dimen/item_height"
+        android:background="@drawable/item_bg"
+        android:src="@drawable/item2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/item_1"
+        app:layout_constraintRight_toLeftOf="@id/item_3"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/item_3"
+        android:layout_width="@dimen/item_width"
+        android:layout_height="@dimen/item_height"
+        android:background="@drawable/item_bg"
+        android:src="@drawable/item3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/item_2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/table"
+        style="@style/BetButton"
+        android:src="@drawable/btn_table"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bet_one"
+        app:layout_constraintTop_toBottomOf="@id/item_1"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/bet_one"
+        style="@style/BetButton"
+        android:src="@drawable/btn_one"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/table"
+        app:layout_constraintRight_toLeftOf="@id/bet_max"
+        app:layout_constraintTop_toBottomOf="@id/item_2"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/bet_max"
+        style="@style/BetButton"
+        android:src="@drawable/btn_max"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/bet_one"
+        app:layout_constraintRight_toLeftOf="@id/spin"
+        app:layout_constraintTop_toBottomOf="@id/item_2"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/spin"
+        style="@style/BetButton"
+        android:src="@drawable/btn_spin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/bet_max"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_3"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

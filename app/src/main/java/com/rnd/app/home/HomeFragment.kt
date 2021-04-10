@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
+import com.rnd.app.R
+import com.rnd.app.common.DEFAULT_MAX_PROGRESS
 import com.rnd.app.common.presentation.BaseFragment
 import com.rnd.app.databinding.FragmentHomeBinding
 import org.koin.android.ext.android.inject
+import java.lang.StringBuilder
 
 class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(),
     HomeContract.View {
@@ -26,6 +27,25 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.loadData()
+
+        binding?.table?.setOnClickListener {
+
+        }
+        binding?.betOne?.setOnClickListener {
+            if (presenter.isBetOneEnabled()){
+                presenter.betOnePressed()
+            }
+        }
+        binding?.betMax?.setOnClickListener {
+            if (presenter.isBetMaxEnabled()){
+                presenter.betMaxPressed()
+            }
+        }
+        binding?.spin?.setOnClickListener {
+            if (presenter.isSpinEnabled()){
+                presenter.spinPressed()
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -33,11 +53,27 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(),
         binding = null
     }
 
-    override fun initView() {
-
+    override fun initView(currentBet: Int, currentCredit: Int, currentWin: Int) {
+        binding?.bet?.text = normalizePrice(currentBet)
+        binding?.credit?.text = normalizePrice(currentCredit)
+        binding?.win?.text = normalizePrice(currentWin)
     }
 
-    override fun navigateTo(direction: NavDirections) {
-        view?.findNavController()?.navigate(direction)
+    private fun normalizePrice(price: Int) =
+        StringBuilder().apply {
+            this.append(price)
+            this.append(context?.resources?.getString(R.string.money_indicator))
+        }.toString()
+
+    override fun enableBetOne(isEnabled: Boolean) {
+        binding?.betOne?.isEnabled = isEnabled
+    }
+
+    override fun enableBetMax(isEnabled: Boolean) {
+        binding?.betMax?.isEnabled = isEnabled
+    }
+
+    override fun enableSpine(isEnabled: Boolean) {
+        binding?.spin?.isEnabled = isEnabled
     }
 }
