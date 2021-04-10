@@ -8,4 +8,16 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="ProgressBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/progress_height</item>
+    </style>
+
+    <style name="ProgressText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/progress_text_size</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

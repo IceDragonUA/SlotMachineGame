@@ -7,7 +7,7 @@ import com.rnd.app.common.presentation.MvpView
 interface SplashContract {
 
     interface View : MvpView {
-        fun initView()
+        fun initView(progress: Float)
         fun navigateTo(direction: NavDirections)
     }
 

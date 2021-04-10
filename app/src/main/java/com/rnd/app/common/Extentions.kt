@@ -23,7 +23,6 @@ fun <K : Any, V : Any> Map<K, V>?.defIfNull() = this ?: mutableMapOf()
 fun empty() = ""
 fun comma() = ","
 fun blank() = " "
-fun newLine() = "\n"
 
 fun ImageView.loadFromUrl(url: String, error: Int = 0) {
     GlideApp.with(this.context.applicationContext)
