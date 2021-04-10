@@ -13,3 +13,5 @@ const val DEFAULT_BET_ONE = 10
 const val DEFAULT_BET_MAX = 30
 const val DEFAULT_CREDIT = 500
 const val DEFAULT_WIN = 0
+const val DEFAULT_SPIN_TIME = 250L
+const val DEFAULT_SPIN_COUNT = 10L

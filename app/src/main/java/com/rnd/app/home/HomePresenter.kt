@@ -1,12 +1,24 @@
 package com.rnd.app.home
 
-import com.rnd.app.common.DEFAULT_BET_MAX
-import com.rnd.app.common.DEFAULT_BET_ONE
-import com.rnd.app.common.DEFAULT_CREDIT
-import com.rnd.app.common.DEFAULT_WIN
+import com.rnd.app.common.*
 import com.rnd.app.common.presentation.BasePresenter
+import io.reactivex.Single
+import io.reactivex.SingleObserver
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
+import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter {
+
+    private var progress: Int = 0
+    private var disposable: Disposable? = null
+
+    private var itemOne: Int = 0
+    private var itemTwo: Int = 0
+    private var itemThree: Int = 0
 
     private var currentBet = DEFAULT_BET_ONE
     private var currentCredit = DEFAULT_CREDIT
@@ -56,6 +68,50 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
         view?.enableBetOne(isBetOneEnabled())
         view?.enableBetMax(isBetMaxEnabled())
         view?.enableSpine(isSpinEnabled())
+
+        startGame()
+    }
+
+    private fun startGame() {
+        isGameStarted = true
+
+        Single.timer(DEFAULT_SPIN_TIME, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : SingleObserver<Long?> {
+                override fun onSubscribe(d: Disposable) {
+                    disposable = d
+                }
+
+                override fun onSuccess(aLong: Long) {
+                    progress += 1
+
+                    if (progress < DEFAULT_SPIN_COUNT) {
+                        itemOne = Random.nextInt(0, 6)
+                        itemTwo = Random.nextInt(0, 6)
+                        itemThree = Random.nextInt(0, 6)
+
+                        view?.initGame(itemOne, itemTwo, itemThree)
+
+                        startGame()
+                    } else {
+
+                        stopTimer()
+                    }
+                }
+
+                override fun onError(throwable: Throwable) {
+                    Timber.e(throwable)
+                }
+            })
+    }
+
+    private fun stopTimer() {
+        if (disposable != null) {
+            disposable?.dispose()
+        }
+        isGameStarted = false
+        progress = 0
     }
 
     override fun isBetOneEnabled(): Boolean {

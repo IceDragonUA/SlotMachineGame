@@ -32,7 +32,7 @@ class SplashPresenter : BasePresenter<SplashContract.View>(), SplashContract.Pre
                 override fun onSuccess(aLong: Long) {
                     progress += 1
 
-                    if (progress < 100) {
+                    if (progress < DEFAULT_MAX_PROGRESS) {
                         startLoading()
                     } else {
                         stopLoading()

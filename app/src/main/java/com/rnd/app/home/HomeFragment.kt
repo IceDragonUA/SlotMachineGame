@@ -19,7 +19,11 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(),
 
     override val presenter by inject<HomeContract.Presenter>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return rootView
     }
@@ -32,17 +36,17 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(),
 
         }
         binding?.betOne?.setOnClickListener {
-            if (presenter.isBetOneEnabled()){
+            if (presenter.isBetOneEnabled()) {
                 presenter.betOnePressed()
             }
         }
         binding?.betMax?.setOnClickListener {
-            if (presenter.isBetMaxEnabled()){
+            if (presenter.isBetMaxEnabled()) {
                 presenter.betMaxPressed()
             }
         }
         binding?.spin?.setOnClickListener {
-            if (presenter.isSpinEnabled()){
+            if (presenter.isSpinEnabled()) {
                 presenter.spinPressed()
             }
         }
@@ -58,6 +62,23 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(),
         binding?.credit?.text = normalizePrice(currentCredit)
         binding?.win?.text = normalizePrice(currentWin)
     }
+
+    override fun initGame(itemOne: Int, itemTwo: Int, itemThree: Int) {
+        binding?.item1?.setImageResource(initDrawable(itemOne))
+        binding?.item2?.setImageResource(initDrawable(itemTwo))
+        binding?.item3?.setImageResource(initDrawable(itemThree))
+    }
+
+    private fun initDrawable(itemOne: Int) =
+        when (itemOne) {
+            0 -> R.drawable.item0
+            1 -> R.drawable.item1
+            2 -> R.drawable.item2
+            3 -> R.drawable.item3
+            4 -> R.drawable.item4
+            5 -> R.drawable.item5
+            else -> R.drawable.item6
+        }
 
     private fun normalizePrice(price: Int) =
         StringBuilder().apply {

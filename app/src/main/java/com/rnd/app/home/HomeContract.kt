@@ -11,6 +11,8 @@ interface HomeContract {
         fun enableBetOne(isEnabled: Boolean)
         fun enableBetMax(isEnabled: Boolean)
         fun enableSpine(isEnabled: Boolean)
+
+        fun initGame(itemOne: Int, itemTwo: Int, itemThree: Int)
     }
 
     interface Presenter : MvpPresenter<View> {
