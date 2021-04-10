@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.rnd.app.R
 import com.rnd.app.common.DEFAULT_MAX_PROGRESS
+import com.rnd.app.common.TAG_DIALOG
 import com.rnd.app.common.presentation.BaseFragment
 import com.rnd.app.databinding.FragmentHomeBinding
+import com.rnd.app.home.table.TableFragment
 import org.koin.android.ext.android.inject
 import java.lang.StringBuilder
 
@@ -33,7 +35,8 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(),
         presenter.loadData()
 
         binding?.table?.setOnClickListener {
-
+            TableFragment.getInstance()
+                .show(parentFragmentManager, TAG_DIALOG)
         }
         binding?.betOne?.setOnClickListener {
             if (presenter.isBetOneEnabled()) {
