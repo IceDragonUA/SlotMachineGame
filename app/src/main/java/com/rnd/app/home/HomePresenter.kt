@@ -1,5 +1,6 @@
 package com.rnd.app.home
 
+import com.rnd.app.R
 import com.rnd.app.common.*
 import com.rnd.app.common.presentation.BasePresenter
 import io.reactivex.Single
@@ -19,6 +20,8 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
     private var itemOne: Int = 0
     private var itemTwo: Int = 0
     private var itemThree: Int = 0
+
+    private var lastBet = 0
 
     private var currentBet = DEFAULT_BET_ONE
     private var currentCredit = DEFAULT_CREDIT
@@ -60,6 +63,7 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
     }
 
     override fun spinPressed() {
+        lastBet = currentBet
         currentCredit -= currentBet
         if (currentCredit - currentBet <= 0) {
             currentBet = currentCredit
@@ -112,6 +116,23 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
         }
         isGameStarted = false
         progress = 0
+
+        if (itemOne == itemTwo && itemOne == itemThree) {
+            currentWin += (lastBet * initCoef(itemOne))
+            view?.initWin(currentWin)
+        }
+    }
+
+    private fun initCoef(itemOne: Int) : Int {
+        return when (itemOne) {
+            0 -> ITEM_1_C
+            1 -> ITEM_2_C
+            2 -> ITEM_3_C
+            3 -> ITEM_4_C
+            4 -> ITEM_5_C
+            5 -> ITEM_6_C
+            else -> ITEM_7_C
+        }
     }
 
     override fun isBetOneEnabled(): Boolean {

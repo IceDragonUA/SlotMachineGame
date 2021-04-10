@@ -69,6 +69,10 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(),
         binding?.item3?.setImageResource(initDrawable(itemThree))
     }
 
+    override fun initWin(win: Int) {
+        binding?.win?.text = normalizePrice(win)
+    }
+
     private fun initDrawable(itemOne: Int) =
         when (itemOne) {
             0 -> R.drawable.item0

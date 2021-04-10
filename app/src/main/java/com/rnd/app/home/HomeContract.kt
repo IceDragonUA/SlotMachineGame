@@ -13,6 +13,8 @@ interface HomeContract {
         fun enableSpine(isEnabled: Boolean)
 
         fun initGame(itemOne: Int, itemTwo: Int, itemThree: Int)
+
+        fun initWin(win: Int)
     }
 
     interface Presenter : MvpPresenter<View> {
