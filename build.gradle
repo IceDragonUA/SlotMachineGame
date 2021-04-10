@@ -1,0 +1,88 @@
+ext {
+    //Production
+    prodFlavor
+
+    //Development
+    devFlavor
+
+    //Versions
+    versionMajor
+    versionMinor
+    versionPatch
+    versionCode
+
+    //Global config
+    androidApplicationId = 'com.rnd.app'
+    androidVersionCode = versionCode
+    androidVersionName = "${versionMajor}.${versionMinor}.${versionPatch}"
+}
+
+buildscript {
+    ext {
+        GRADLE_SCRIPT = { scriptName ->
+            file("${rootProject.projectDir}/${scriptName}.gradle")
+        }
+    }
+    apply from: GRADLE_SCRIPT('dependencies')
+
+    def versionPropsFile = file('version.properties')
+    if (versionPropsFile.canRead()) {
+        Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+
+        def major = versionProps['VERSION_MAJOR'].toInteger()
+        def minor = versionProps['VERSION_MINOR'].toInteger()
+        def patch = versionProps['VERSION_PATCH'].toInteger()
+
+        ext.versionMajor = major
+        ext.versionMinor = minor
+        ext.versionPatch = patch
+
+        def code = ext.versionMajor.toString() + ext.versionMinor.toString() + ext.versionPatch.toString()
+        ext.versionCode = code.toInteger()
+
+        versionProps['VERSION_MAJOR'] = versionMajor.toString()
+        versionProps['VERSION_MINOR'] = versionMinor.toString()
+        versionProps['VERSION_PATCH'] = versionPatch.toString()
+        versionProps['VERSION_CODE'] = versionCode.toString()
+    }
+
+    def developmentPropsFile = file('development.properties')
+    if (developmentPropsFile.canRead()) {
+        Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(developmentPropsFile))
+        ext.devFlavor = versionProps['FLAVOR'].toString()
+    }
+
+    def productionPropsFile = file('production.properties')
+    if (productionPropsFile.canRead()) {
+        Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(productionPropsFile))
+        ext.prodFlavor = versionProps['FLAVOR'].toString()
+    }
+
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath gradleDependencies.androidGradlePlugin
+        classpath gradleDependencies.kotlinGradlePlugin
+        classpath gradleDependencies.kotlinExtGradlePlugin
+        classpath gradleDependencies.safeArgsGradlePlugin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

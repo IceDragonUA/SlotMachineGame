@@ -1,0 +1,55 @@
+ext {
+    //Android
+    androidMinSdkVersion = 21
+    androidTargetSdkVersion = 29
+    androidCompileSdkVersion = 29
+
+    //Gradle
+    gradleAndroidVersion = '4.1.3'
+    gradleKotlinVersion = '1.4.21'
+    gradleKotlinExtVersion = '1.4.21'
+    gradleSafeArgs = '2.3.2'
+
+    appCompatVersion = '1.2.0'
+    materialVersion = '1.2.1'
+    ankoVersion = '0.10.8'
+    koinVersion = '2.2.2'
+    lifecycleVersion = '2.2.0'
+    coreKtxVersion = '1.3.2'
+    kotlinStdVersion = '1.4.21'
+    constraintVersion = '2.0.4'
+    navigationVersion = '2.3.2'
+    glideVersion = '4.11.0'
+    multidexVersion = '1.0.3'
+    timberVersion = '4.7.1'
+    rxJavaVersion = "2.2.21"
+    rxAndroidVersion = "2.1.1"
+
+    gradleDependencies = [
+            androidGradlePlugin  : "com.android.tools.build:gradle:${gradleAndroidVersion}",
+            kotlinGradlePlugin   : "org.jetbrains.kotlin:kotlin-gradle-plugin:${gradleKotlinVersion}",
+            kotlinExtGradlePlugin: "org.jetbrains.kotlin:kotlin-android-extensions:${gradleKotlinExtVersion}",
+            safeArgsGradlePlugin : "androidx.navigation:navigation-safe-args-gradle-plugin:${gradleSafeArgs}"
+    ]
+
+    appDependencies = [
+            kotlinStd                : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinStdVersion}",
+            lifecycleExtentions      : "androidx.lifecycle:lifecycle-extensions:${lifecycleVersion}",
+            lifecycleCompiler        : "androidx.lifecycle:lifecycle-compiler:${lifecycleVersion}",
+            constraint               : "androidx.constraintlayout:constraintlayout:${constraintVersion}",
+            multidex                 : "com.android.support:multidex:${multidexVersion}",
+            appCompat                : "androidx.appcompat:appcompat:${appCompatVersion}",
+            material                 : "com.google.android.material:material:${materialVersion}",
+            anko                     : "org.jetbrains.anko:anko-commons:${ankoVersion}",
+            coreKtx                  : "androidx.core:core-ktx:${coreKtxVersion}",
+            koin                     : "org.koin:koin-android:${koinVersion}",
+            navigationUi             : "androidx.navigation:navigation-ui-ktx:${navigationVersion}",
+            navigationFragment       : "androidx.navigation:navigation-fragment-ktx:${navigationVersion}",
+            navigationFeature        : "androidx.navigation:navigation-dynamic-features-fragment:${navigationVersion}",
+            glide                    : "com.github.bumptech.glide:glide:${glideVersion}",
+            glideCompiler            : "com.github.bumptech.glide:compiler:${glideVersion}",
+            rxJava                   : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid                : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            timber                   : "com.jakewharton.timber:timber:${timberVersion}",
+    ]
+}

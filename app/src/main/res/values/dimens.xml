@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="match_parent" format="integer" type="dimen">-1</item>
+    <item name="wrap_content" format="integer" type="dimen">-2</item>
+
+    <item name="dialog_width" format="float" type="dimen">1</item>
+    <item name="dialog_height" format="float" type="dimen">1</item>
+
+    <dimen name="default_width">0dp</dimen>
+    <dimen name="default_height">0dp</dimen>
+    <dimen name="default_padding">0dp</dimen>
+    <dimen name="default_margin">0dp</dimen>
+
+</resources>
